@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import { Card, Button, Input } from "@heroui/react";
+import { Card, Button} from "@heroui/react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PinAuth } from "./PinAuth";
 
