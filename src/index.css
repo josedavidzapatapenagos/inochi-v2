@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-inochi-lime: #9abe2d;
+  --color-inochi-slate: #334c58;
+}
+
+/* Configuraciones base del body */
+body {
+  @apply bg-slate-50 text-slate-900 transition-colors duration-500;
+  font-family: 'Inter', sans-serif;
+}
+
+.dark body {
+  @apply bg-[#0a0a0a] text-slate-200;
+}
+
+/* --- ANIMACIONES PREMIUM RALENTIZADAS --- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px); /* Un recorrido ligeramente mayor para notar la suavidad */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Cambiado a 1.6 segundos con una curva de desaceleración ultra suave */
+.animate-fade-in-up {
+  animation: fadeInUp 1.6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Retrasos espaciados proporcionalmente para la velocidad lenta */
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Reglas requeridas para transiciones */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+.dark::view-transition-old(root) { z-index: 1; }
+.dark::view-transition-new(root) { z-index: 999; }
+::view-transition-old(root) { z-index: 999; }
+::view-transition-new(root) { z-index: 1; }
