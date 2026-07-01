@@ -7,8 +7,8 @@ import { WhatsAppFloat } from "./components/WhatsAppFloat";
 import { BlogManager } from "./components/BlogManager"; 
 import { Link } from "@heroui/react";
 import { motion } from "framer-motion";
-import { FileText } from "lucide-react"; // Importamos el icono
 import isotipoHoja from "./assets/imagen_2026-05-20_193826631-removebg-preview.png";
+import { FileText, FileBarChart2, ArrowRight } from "lucide-react";
 
 function App() {
   return (
@@ -62,33 +62,104 @@ function App() {
       <section id="blog" className="py-20 bg-slate-100 dark:bg-black/20">
         <BlogManager />
       </section>
+      {/* SECCIÓN LEGAL */}
+<section
+  id="legal"
+  className="py-24 bg-slate-50 dark:bg-[#0a0a0a] transition-colors duration-500"
+>
+  <div className="max-w-6xl mx-auto px-6">
 
-      {/* SECCIÓN LEGAL INTEGRADA */}
-      <section id="legal" className="py-24 px-6 bg-white dark:bg-[#0a0a0a] transition-colors duration-500">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Legal</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              { title: "ESTADOS FINANCIEROS 2024", url: "/estados-financieros-2024.pdf" },
-              { title: "INFORME DE GESTIÓN 2024", url: "/informe-gestion-2024.pdf" }
-            ].map((doc, i) => (
-              <a 
-                key={i}
-                href={doc.url} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group block bg-slate-50 dark:bg-[#111111] p-8 border-t-4 border-inochi-lime shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-              >
-                <FileText className="w-8 h-8 text-inochi-lime mb-6" />
-                <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2">{doc.title}</h3>
-                <p className="text-sm font-bold text-slate-400 group-hover:text-inochi-lime transition-colors">— VER DOCUMENTO</p>
-              </a>
-            ))}
-          </div>
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+        Legal
+      </h2>
+
+      <div className="w-24 h-1 bg-inochi-lime mx-auto mt-5 rounded-full" />
+
+      <p className="mt-6 text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        Consulta y descarga los documentos oficiales de la Fundación Inochi.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+      {/* Estados Financieros */}
+      <motion.a
+        whileHover={{ y: -8 }}
+        whileTap={{ scale: 0.98 }}
+        href="/estados-financieros-2024.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group bg-white dark:bg-[#111111] rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-white/10 overflow-hidden"
+      >
+
+        <div className="w-16 h-16 rounded-2xl bg-inochi-lime/15 flex items-center justify-center mb-6 group-hover:bg-inochi-lime transition-all duration-300">
+          <FileBarChart2
+            size={34}
+            className="text-inochi-lime group-hover:text-black transition-colors"
+          />
         </div>
-      </section>
+
+        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 group-hover:text-inochi-lime transition-colors">
+          Estados Financieros 2024
+        </h3>
+
+        <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+          Consulta los estados financieros oficiales correspondientes al año
+          2024.
+        </p>
+
+        <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-inochi-lime">
+          Ver documento
+
+          <ArrowRight
+            size={18}
+            className="transition-transform duration-300 group-hover:translate-x-2"
+          />
+        </div>
+
+      </motion.a>
+
+      {/* Informe de Gestión */}
+      <motion.a
+        whileHover={{ y: -8 }}
+        whileTap={{ scale: 0.98 }}
+        href="/informe-gestion-2024.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group bg-white dark:bg-[#111111] rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200 dark:border-white/10 overflow-hidden"
+      >
+
+        <div className="w-16 h-16 rounded-2xl bg-inochi-lime/15 flex items-center justify-center mb-6 group-hover:bg-inochi-lime transition-all duration-300">
+          <FileText
+            size={34}
+            className="text-inochi-lime group-hover:text-black transition-colors"
+          />
+        </div>
+
+        <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-4 group-hover:text-inochi-lime transition-colors">
+          Informe de Gestión 2024
+        </h3>
+
+        <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+          Revisa el informe institucional y las actividades desarrolladas
+          durante el año 2024.
+        </p>
+
+        <div className="flex items-center gap-2 font-bold uppercase tracking-wider text-inochi-lime">
+          Ver documento
+
+          <ArrowRight
+            size={18}
+            className="transition-transform duration-300 group-hover:translate-x-2"
+          />
+        </div>
+
+      </motion.a>
+
+    </div>
+  </div>
+</section>
 
       <Contacto />
       <WhatsAppFloat />
@@ -97,6 +168,7 @@ function App() {
         © 2026 Fundación Inochi - 901627164-1
       </footer>
     </div>
+    
   );
 }
 
